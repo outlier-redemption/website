@@ -1,0 +1,130 @@
+---
+title: Tuvalu
+author: Violeta Roizman
+date: '2020-10-29'
+slug: []
+categories: []
+tags: []
+showDate: yes
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(extrafont)
+library(rgeos)
+library(sf)
+loadfonts(dev = "win")
+
+world <- rnaturalearth::ne_countries(scale = 10, returnclass = "sp")
+box_cut <- rgeos::bbox2SP(n = 90, s = -90, w = -70, e = 160, proj4string = world@proj4string)
+world_crop <- rgeos::gDifference(world, box_cut)
+
+# pacific_crop <- world_crop %>% 
+#   st_as_sf() %>% # change from sp to sf object/class
+#   st_shift_longitude() %>% 
+#   st_crop(c(xmin = st_bbox(.)[["xmin"]],
+#             xmax = st_bbox(.)[["xmax"]],
+#             ymin = -20,
+#             ymax = 0))
+# 
+# tiny_countries <- rnaturalearthdata::tiny_countries50 %>% 
+#   st_as_sf() %>%
+#   st_shift_longitude() %>% 
+#   st_crop(c(xmin = 120, xmax = 250, ymin = -50, ymax = 30)) %>% 
+#   # Also adds the coordinates to be used for labeling with geom_text_repel
+#   bind_cols(st_coordinates(.) %>% as.data.frame())
+# 
+# ggplot() +
+#   geom_sf(data = pacific_crop) +
+#   geom_sf(data = tiny_countries, size = 2, color = "red")
+# 
+# world <- rnaturalearth::ne_countries(scale = 10) %>%
+#   st_as_sf() %>%
+#   sf::st_shift_longitude() %>% 
+#   sf::st_crop(c(xmin = 165,
+#             xmax = 188,
+#             ymin = -20,
+#             ymax = 0))
+# 
+# rnaturalearthdata::tiny_countries50
+# 
+# tuvalu <- filter(pacific_crop, name_en == "Tuvalu") 
+# 
+lighten <- function(color, factor=1.4){
+    col <- col2rgb(color)
+    col <- col*factor
+    col <- rgb(t(col), maxColorValue=255)
+    col
+}
+# 
+# tiny_countries <- rnaturalearthdata::tiny_countries50 %>% 
+#   st_as_sf() %>%
+#   st_shift_longitude() %>% 
+#   st_crop(c(xmin = 120, xmax = 250, ymin = -50, ymax = 30)) %>% 
+#   # Also adds the coordinates to be used for labeling with geom_text_repel
+#   bind_cols(st_coordinates(.) %>% as.data.frame())
+# 
+paleta = colorspace::rainbow_hcl(10)
+# 
+# world_crop %>% 
+#   st_as_sf() %>% # change from sp to sf object/class
+#   st_shift_longitude() %>%
+#   st_bbox()
+
+
+pacific_crop <- world_crop %>% 
+  st_as_sf() %>% # change from sp to sf object/class
+  st_shift_longitude() %>% 
+  st_crop(c(xmin = 120,
+            xmax = 220,
+            ymin = -50,
+            ymax = 30))
+
+tiny_countries <- rnaturalearthdata::tiny_countries50 %>% 
+  st_as_sf() %>%
+  st_shift_longitude() %>% 
+  st_crop(c(xmin = 160, xmax = 220, ymin = -50, ymax = 30)) %>% 
+  # Also adds the coordinates to be used for labeling with geom_text_repel
+  bind_cols(st_coordinates(.) %>% as.data.frame())
+
+tiny_countries2 <- rnaturalearthdata::tiny_countries50 %>% 
+  st_as_sf() %>%
+  filter(name == "Tuvalu") %>%
+  st_shift_longitude() %>% 
+  st_crop(c(xmin = 160, xmax = 220, ymin = -50, ymax = 30)) %>% 
+  # Also adds the coordinates to be used for labeling with geom_text_repel
+  bind_cols(st_coordinates(.) %>% as.data.frame())
+
+
+
+```
+
+
+Have you ever heard about the country [Tuvalu](https://en.wikipedia.org/wiki/Tuvalu)? Have you ever heard about [Twitch](twitch.tv)? In this post we tell you what they have in common.
+
+You probably heard about the increasingly popular streaming platform Twitch. It has been recently acquired by [Amazon](http://amazon.com/). You may have noticed that domain of the platform is ".tv". Of course, it's a streaming website, right? Have you ever wonder what does it take to put a ".tv" domain on your website? Well, you have to pay for that. And when you pay for that domain you are implicitly paying to Tuvalu. Indeed, Tuvalu is a lucky micro-state whose country internet domain is ".tv". The country government has been selling the rights to use it since a long time.
+
+```{r, echo=FALSE, out.width="100%", fig.width=9, fig.height=5}
+ggplot() +
+  geom_sf(data = pacific_crop, fill = "lightgray", color = "lightgray") +
+  geom_sf(data = tiny_countries2, size = 2, color = paleta[1]) +
+  geom_sf(data = tiny_countries, size = 2, color = "red", alpha = 0) +
+  coord_sf(expand = FALSE) +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = lighten("#272822", 1.4), color = lighten("#272822", 1.4)),
+        #panel.border =  element_rect(fill = "#272822", color = "#272822"),
+        text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        axis.text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), 
+        plot.background = element_rect(fill = "#272822", color = "#272822"))
+
+```
+
+
+In 2019, The Washington Post [published](https://www.washingtonpost.com/video-games/2019/12/23/tuvalu-is-tiny-island-nation-people-its-cashing-thanks-twitch/) that Verisign pays around 5 million dollars per year to Tuvalu for the right to administrate the valuable domain (another link in the story: The Washington Post is owned by Jeff Bezos, [the richest man on Earth](https://mkorostoff.github.io/1-pixel-wealth/), who is the Amazon owner and then Twitch owner). Let's see which fraction of Tuvalu's annual gross national income (GNI) represents this ".tv" income.
+
+
+
+
+Tuvalu is not happy with the contract that signed in 2011 with Verisign, which is valid until 2021. Then, the next year could be a great year for Tuvalu if they manage to establish a good new contract given the Twitch explosion.  

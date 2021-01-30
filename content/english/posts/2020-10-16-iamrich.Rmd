@@ -1,0 +1,76 @@
+---
+title: I am rich
+author: Violeta Roizman
+date: '2020-10-16'
+slug: iamrich
+categories: []
+tags: []
+showDate: yes
+---
+
+Hi, there. This entry is about a special group of applications that can be found in the [Google Play store](https://play.google.com/store?hl=es&gl=US). I found about these apps procrastinating with data during [my PhD](https://www.universite-paris-saclay.fr/recherche/doctorat). The dataset is stored in  [Kaggle](https://www.kaggle.com/lava18/google-play-store-apps#googleplaystore.csv) and the last update was in 2019. 
+
+We can identify these apps by their prices. Let's make a plot of the app prices of the store. To do this, we choose to use an histogram. Histograms are a practical way of visualizing the way in which a set of values are distributed. We have to group the prices in bins and then count how many apps have a price that lies into each bin. The following graph shows the data: 
+
+```{r , echo = FALSE, message=FALSE, warning=FALSE}
+paleta = colorspace::rainbow_hcl(10, c=100, l=65)
+paleta = colorspace::rainbow_hcl(10)
+library(extrafont)
+loadfonts(dev = "win")
+library(ggplot2)
+library(tidyverse)
+library(magrittr)
+lighten <- function(color, factor=1.4){
+    col <- col2rgb(color)
+    col <- col*factor
+    col <- rgb(t(col), maxColorValue=255)
+    col
+}
+
+apps <- readr::read_csv("https://raw.githubusercontent.com/cienciadedatos/datos-de-miercoles/master/datos/2019/2019-07-24/apps_googleplaystore.csv")
+
+ggplot(apps) +
+  geom_histogram(aes(x=precio), fill = paleta[10], bins = 33) +
+  ggforce::geom_ellipse(mapping = aes(x0 = 400, y0 = 0, a = 30, b = 1000, angle = 0), color = paleta[10], size = 1.2) +
+  theme_minimal() +
+  labs(y = "", x = "price") +
+  theme(plot.background = element_rect(fill = "#272822", color = "#272822"),
+        panel.background = element_rect(fill = lighten("#272822", 1.4), color = lighten("#272822", 1.4)),
+        text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        axis.text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_line(size = 0.1), panel.grid.minor.y = element_line(size = 0.1))
+
+```
+The plot shows that most of the applications have a small price, close to zero. However, the horizontal axis is extended until values around 400. Indeed, looking closer we see that there is a tiny bar representing some apps with a price close to 400. Let's make a zoom to see better:
+
+```{r , echo = FALSE, message=FALSE, warning=FALSE}
+ggplot(apps, aes(x=precio)) +
+  geom_histogram(fill = paleta[10], bins = 33) +
+  ggforce::facet_zoom(xlim = c(350, 410), ylim = c(0, 15), horizontal = FALSE) +
+  theme_minimal() +
+  labs(y = "", x = "price") +
+  theme(plot.background = element_rect(fill = "#272822", color = "#272822"),
+        panel.background = element_rect(fill = lighten("#272822", 1.4), color = lighten("#272822", 1.4)),
+        text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        axis.text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_line(size = 0.1), panel.grid.minor.y = element_line(size = 0.1),
+        strip.background = element_rect(fill = alpha(lighten("#272822", 1.4), 1), color = lighten("#272822", 1.4)))
+```
+There are around 15 applications with a price similar to 400, why? If we dig a bit further, we get that the names of those apps are:
+
+```{r, echo=FALSE}
+apps %>%
+  dplyr::filter(precio > 350) %>%
+  dplyr::pull(app)
+```
+All names are equivalent to "I am rich". The developers of one of these apps describe its utility:
+
+> This app do absolutely nothing, but it works like a status symbol.
+> The icon is really sexy and the app itself shows a beautiful luxury diamond.
+> This app maybe is the most expensive app on the market and it's based on other similar "I'm rich" type of apps.
+
+The dataset is a bit out-of-date. There was some cleaning-up, but, if you search for them, some of these apps still exist.
+
+Stay tuned for more facts about trashy humanity.

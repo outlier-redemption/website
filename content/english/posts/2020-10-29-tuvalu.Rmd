@@ -1,0 +1,166 @@
+---
+title: Tuvalu
+author: Violeta Roizman
+date: '2020-10-29'
+slug: []
+categories: []
+tags: []
+showDate: yes
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(extrafont)
+library(rgeos)
+library(sf)
+library(here)
+loadfonts(dev = "win")
+
+world <- rnaturalearth::ne_countries(scale = 10, returnclass = "sp")
+box_cut <- rgeos::bbox2SP(n = 90, s = -90, w = -60, e = 90, proj4string = world@proj4string)
+world_crop <- rgeos::gDifference(world, box_cut)
+
+# pacific_crop <- world_crop %>% 
+#   st_as_sf() %>% # change from sp to sf object/class
+#   st_shift_longitude() %>% 
+#   st_crop(c(xmin = st_bbox(.)[["xmin"]],
+#             xmax = st_bbox(.)[["xmax"]],
+#             ymin = -20,
+#             ymax = 0))
+# 
+# tiny_countries <- rnaturalearthdata::tiny_countries50 %>% 
+#   st_as_sf() %>%
+#   st_shift_longitude() %>% 
+#   st_crop(c(xmin = 120, xmax = 250, ymin = -50, ymax = 30)) %>% 
+#   # Also adds the coordinates to be used for labeling with geom_text_repel
+#   bind_cols(st_coordinates(.) %>% as.data.frame())
+# 
+# ggplot() +
+#   geom_sf(data = pacific_crop) +
+#   geom_sf(data = tiny_countries, size = 2, color = "red")
+# 
+# world <- rnaturalearth::ne_countries(scale = 10) %>%
+#   st_as_sf() %>%
+#   sf::st_shift_longitude() %>% 
+#   sf::st_crop(c(xmin = 165,
+#             xmax = 188,
+#             ymin = -20,
+#             ymax = 0))
+# 
+# rnaturalearthdata::tiny_countries50
+# 
+# tuvalu <- filter(pacific_crop, name_en == "Tuvalu") 
+# 
+lighten <- function(color, factor=1.4){
+    col <- col2rgb(color)
+    col <- col*factor
+    col <- rgb(t(col), maxColorValue=255)
+    col
+}
+# 
+# tiny_countries <- rnaturalearthdata::tiny_countries50 %>% 
+#   st_as_sf() %>%
+#   st_shift_longitude() %>% 
+#   st_crop(c(xmin = 120, xmax = 250, ymin = -50, ymax = 30)) %>% 
+#   # Also adds the coordinates to be used for labeling with geom_text_repel
+#   bind_cols(st_coordinates(.) %>% as.data.frame())
+# 
+paleta = colorspace::rainbow_hcl(10)
+# 
+# world_crop %>% 
+#   st_as_sf() %>% # change from sp to sf object/class
+#   st_shift_longitude() %>%
+#   st_bbox()
+
+
+pacific_crop <- world_crop %>% 
+  st_as_sf() %>% # change from sp to sf object/class
+  st_shift_longitude() %>% 
+  st_crop(c(xmin = 90,
+            xmax = 230,
+            ymin = -50,
+            ymax = 30))
+
+tiny_countries <- rnaturalearthdata::tiny_countries50 %>% 
+  st_as_sf() %>%
+  st_shift_longitude() %>% 
+  st_crop(c(xmin = 90, xmax = 230, ymin = -50, ymax = 30)) %>% 
+  # Also adds the coordinates to be used for labeling with geom_text_repel
+  bind_cols(st_coordinates(.) %>% as.data.frame())
+
+tiny_countries2 <- rnaturalearthdata::tiny_countries50 %>% 
+  st_as_sf() %>%
+  filter(name == "Tuvalu") %>%
+  st_shift_longitude() %>% 
+  st_crop(c(xmin = 90, xmax = 230, ymin = -50, ymax = 30)) %>% 
+  # Also adds the coordinates to be used for labeling with geom_text_repel
+  bind_cols(st_coordinates(.) %>% as.data.frame())
+
+# library(ggplot2)
+# library(maps)
+# devtools::install_github('bbest/sf')
+# library(sf)
+# 
+# wrld2 = st_as_sf(map('world2', plot=F, fill=T))
+# ggplot() +
+#   geom_sf(data=wrld2, fill='lightgray') +
+#   coord_sf(xlim=c(140,295), ylim=c(5,60))
+
+
+```
+
+```{r, echo=FALSE, out.width="100%", fig.width=9, fig.height=5, message=FALSE, warning=FALSE}
+tuvalu_map <- ggplot() +
+  geom_sf(data = pacific_crop, fill = "lightgray", color = "lightgray") +
+  geom_sf(data = tiny_countries2, size = 2, color = paleta[1]) +
+  geom_sf(data = tiny_countries, size = 2, color = "red", alpha = 0) +
+  coord_sf(expand = FALSE) +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = lighten("#272822", 1.4), color = lighten("#272822", 1.4)),
+        #panel.border =  element_rect(fill = "#272822", color = "#272822"),
+        text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        axis.text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(),
+        plot.background = element_rect(fill = "#272822", color = "#272822"))
+ggsave(here::here("static", "img", "tuvalis.png") , dpi = 400, bg = "#272822")
+```
+
+
+
+Have you ever heard about the country [Tuvalu](https://en.wikipedia.org/wiki/Tuvalu)? Have you ever heard about [Twitch](twitch.tv)? In this post we tell you what they have in common. 
+
+Tuvalu is a tiny country located in the Polynesian subregion of Oceania. The surface of Tuvalu is 26 squared km and it has an estimated population of around 11.500 habitants. It's curiously located almost at 180 degrees of longitude:
+<img src = "/img/tuvalis.png" width = "100%">
+
+
+You've probably heard about the increasingly popular streaming platform Twitch. It has been recently acquired by [Amazon](http://amazon.com/). You may have noticed that domain of the platform is ".tv". Of course, it's a streaming website, right? Have you ever wondered what does it take to put a ".tv" domain on your website? Well, you have to pay for that. And when you pay for that domain you are implicitly paying to Tuvalu. Indeed, Tuvalu is a lucky micro-state whose country internet domain is ".tv". Tuvalu's government has been selling the rights to use it since a long time.
+
+In 2019, The Washington Post [published](https://www.washingtonpost.com/video-games/2019/12/23/tuvalu-is-tiny-island-nation-people-its-cashing-thanks-twitch/) that Verisign pays around 5 million dollars per year to Tuvalu since 2011 for the right to administrate the valuable domain (another link in the story: The Washington Post is owned by [Jeff Bezos](https://mkorostoff.github.io/1-pixel-wealth/), who is Amazon's owner and then Twitch's owner). Let's see which fraction of Tuvalu's annual gross national income (GNI) represents this ".tv" income:
+
+```{r, echo=FALSE, out.width="100%", fig.width=9, fig.height=5, message=FALSE, warning=FALSE}
+tuvalu_years <- c(2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019)
+
+tuvalu_GNI <- c(24960328.95, 33312887.1, 28110318.44, 36589277.83, 37400840.02, 37830798.19, 48173709.31, 49241989.6, 47385821.24, 50918730.51, 57742238.27, 49401532.41, 58017281.33, 49698846.22, 55661783.49, 55456437.7, 58095263.64, 64107890.02, 65326451.16)
+
+data_tuvalu <- tibble(years = tuvalu_years, GNI = tuvalu_GNI) 
+
+ggplot(data_tuvalu) +
+  geom_line(aes(x = years, y = GNI), size = 1.5, color = "white") +
+  geom_hline(yintercept = 5000000, color = paleta[1], size = 1.2, lty = 2) +
+  scale_y_continuous(limits = c(0, 70000000)) +
+  scale_x_continuous(limits = c(2011, 2019), breaks = c(2011,2013,2015,2017,2019)) +
+  labs(x = "", y = "GNI (US dollars)", caption = "Source: data.worldbank.org") +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = lighten("#272822", 1.4), color = lighten("#272822", 1.2)),
+        #panel.border =  element_rect(fill = "#272822", color = "#272822"),
+        text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        axis.text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        plot.background = element_rect(fill = "#272822", color = "#272822"))
+
+```
+In the last 10 years, between 7.7% and 10.2% of the GNI of Tuvalu came from the ".tv" domain. And that, only for being lucky enough to have a coveted internet domain.
+
+The Washington Post wrote that Tuvalu's authorities are not happy with the contract signed with Verisign, which is valid until 2021. Then, this year could be a great year for Tuvalu if they manage to establish a better contract given the Twitch explosion.  
