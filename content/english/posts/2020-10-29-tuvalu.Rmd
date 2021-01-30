@@ -131,8 +131,10 @@ ggsave(here::here("static", "img", "tuvalis.png") , dpi = 400, bg = "#272822")
 Have you ever heard about the country [Tuvalu](https://en.wikipedia.org/wiki/Tuvalu)? Have you ever heard about [Twitch](twitch.tv)? In this post we tell you what they have in common. 
 
 Tuvalu is a tiny country located in the Polynesian subregion of Oceania. The surface of Tuvalu is 26 squared km and it has an estimated population of around 11.500 habitants. It's curiously located almost at 180 degrees of longitude:
-<img src = "/img/tuvalis.png" width = "100%">
 
+``` {r, out.width = "100%", fig.pos="h"}
+knitr::include_graphics("tuvalis.png")
+```
 
 You've probably heard about the increasingly popular streaming platform Twitch. It has been recently acquired by [Amazon](http://amazon.com/). You may have noticed that domain of the platform is ".tv". Of course, it's a streaming website, right? Have you ever wondered what does it take to put a ".tv" domain on your website? Well, you have to pay for that. And when you pay for that domain you are implicitly paying to Tuvalu. Indeed, Tuvalu is a lucky micro-state whose country internet domain is ".tv". Tuvalu's government has been selling the rights to use it since a long time.
 
