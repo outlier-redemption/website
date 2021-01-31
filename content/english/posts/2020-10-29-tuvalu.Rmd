@@ -132,7 +132,7 @@ Have you ever heard about the country [Tuvalu](https://en.wikipedia.org/wiki/Tuv
 
 Tuvalu is a tiny country located in the Polynesian subregion of Oceania. The surface of Tuvalu is 26 squared km and it has an estimated population of around 11.500 habitants. It's curiously located almost at 180 degrees of longitude:
 
-``` {r, out.width = "100%", fig.pos="h"}
+``` {r, out.width = "100%", fig.pos="h", echo = FALSE, message = FALSE}
 knitr::include_graphics("tuvalis.png")
 ```
 
