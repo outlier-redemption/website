@@ -7,8 +7,9 @@ categories: []
 tags: []
 showDate: yes
 ---
+Holis! Esta entrega es sobre un grupo especial de aplicaciones que puede encontrarse en [Google Play store](https://play.google.com/store?hl=es&gl=US). Me enteré de la existencia de estas aplicaciones en mis tiempos de procrastinación durante [mi doctorado](https://www.universite-paris-saclay.fr/recherche/doctorat), analizando decenas de datasets totalmente random. Este dataset en particular está almacenado en el sitio  [Kaggle](https://www.kaggle.com/lava18/google-play-store-apps#googleplaystore.csv) y última actualización del mismo fue en 2019. 
 
-Hi, there. This entry is about a special group of applications that can be found on the Google Play store. We can identify this group by the app prices. Let's make a plot of the app prices of the store. To do this, we choose an histogram. Histograms are a practical way of visualizing the the way a set of values are distributed. We have to group the prices in bins and then count how many apps have a price that lies into each bin. The following graph shows the data 
+Podemos identificar a este curioso grupo por los precios de estas aplicaciones en la tienda. Hagamos un gráfico de los precios en dólares de cada una de las aplicaciones de Google Play. Para esto, usamos un gráfico que se llama histograma. Los histogramas son una forma práctica de visualizar la forma en la que un conjunto de valores se distribuyen. Para construirlo, tenemos que agrupar los precios en cajitas y después contar cuántas aplicaciones caen en cada uno de ellos. El gráfico siguiente muestra los datos:
 
 ```{r , echo = FALSE, message=FALSE, warning=FALSE}
 paleta = colorspace::rainbow_hcl(10, c=100, l=65)
@@ -38,7 +39,8 @@ ggplot(apps, aes(x=precio)) +
         panel.grid.major.y = element_line(size = 0.1), panel.grid.minor.y = element_line(size = 0.1))
 
 ```
-The plot shows that most of the applications have a small price, close to zero. However, the horizontal axis is extended until values around 400. Indeed, looking closer we see that there is a tiny bar representing some apps with a price close to 400. Let's make a zoom to see better:
+
+El histograma muestra que la mayoría de las aplicaciones tienen un precio chico, cercano a cero. Sin embargo, vemos que el eje horizontal se extiende hasta valores alrededor de 400. De hecho, mirando con más atención podemos ver que hay una barrita muy pequeña que representa a aplicaciones con un precio cercano a 400. Hagamos zoom para ver mejor:
 
 ```{r , echo = FALSE, message=FALSE, warning=FALSE}
 ggplot(apps, aes(x=precio)) +
@@ -54,17 +56,21 @@ ggplot(apps, aes(x=precio)) +
         panel.grid.major.y = element_line(size = 0.1), panel.grid.minor.y = element_line(size = 0.1),
         strip.background = element_rect(fill = alpha(lighten("#272822", 1.4), 1), color = lighten("#272822", 1.4)))
 ```
-There are around 15 applications with a price similar to 400, why? If we dig a bit further, we get that the names of those apps are:
+
+Hay alrededor de 15 aplicaciones con un precio similar a 400, ¿por qué? Si vamos un poco más lejos y nos fijamos el nombre de estas aplicaciones:
 
 ```{r, echo=FALSE}
 apps %>%
   dplyr::filter(precio > 350) %>%
   dplyr::pull(app)
 ```
-All names are equivalent to "I am rich". The description of a randomly chosen of this apps states:
 
-> This app do absolutely nothing, but it works like a status symbol.
-> The icon is really sexy and the app itself shows a beautiful luxury diamond.
-> This app maybe is the most expensive app on the market and it's based on other similar "I'm rich" type of apps.
+Todos los nombres son equivalentes a "Soy rico" en distintos idiomas. Los desarrolladores de una de estas apps la definen como:
 
-Stay tuned for more facts about trashy humanity.
+> Esta app no hace absolutamente nada, pero funciona como un símbolo de status social.
+> El icono de la aplicación es muy atractivo y la app en sí muestra un hermoso y lujoso diamente.
+> Esta app es quizás la más cara del mercado y está basada en otras aplicaciones similares del tipo "I am rich".
+
+El dataset está un poquito desactualizado. En el interín, hubo una limpieza de estas aplicaciones basura. Sin embargo, si buscás estás aplicaciones vas a encontrar que todavía existen varias de ellas y ahora tienen un precio de 349.99 dólares, el máximo actual.
+
+Quedate atent@ a la próxima entrega para más datos falopa sobre la humanidad.
