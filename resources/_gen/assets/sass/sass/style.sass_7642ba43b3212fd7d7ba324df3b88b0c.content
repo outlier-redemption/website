@@ -33,7 +33,7 @@ h1, h2, h3 {
   opacity: 0.6; }
 
 li {
-  opacity: 0.8; }
+  opacity: 1; }
   li a {
     opacity: 0.9; }
 
