@@ -35,9 +35,6 @@
         {{ if .Site.Params.mainMenu }}
         <nav role="navigation" class="flex-container bottom-menu">
             {{ partial "bottom_menu.html" (dict "Page" . "show_back_menu_item" false) }}
-            <p>
-<a href="https://outlier-redemption.netlify.app/en/">EN</a> | <a href="https://outlier-redemption.netlify.app/es/">ES</a>
-</p>
         </nav>
         {{ end }}
         {{ end }}
@@ -45,8 +42,9 @@
     {{ block "footer" . }}
     <footer class="flex-container footer">{{ partial "footer.html" . }}</footer>
     {{ end }}
+     <p>
+<a href="https://outlier-redemption.netlify.app/en/">EN</a> | <a href="https://outlier-redemption.netlify.app/es/">ES</a>
     {{ end }}
-
+</p>
 </body>
-
 </html>
