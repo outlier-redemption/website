@@ -30,6 +30,11 @@ h1, h2, h3 {
   font-family: 'Didact Gothic', sans-serif;
   opacity: 0.6; }
 
+form { 
+  margin: 0 auto; 
+  width:250px;
+}
+
 li {
   opacity: 0.8; }
   li a {
