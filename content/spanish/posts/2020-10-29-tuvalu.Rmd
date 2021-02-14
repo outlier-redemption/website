@@ -13,9 +13,12 @@ library(tidyverse)
 library(extrafont)
 library(rgeos)
 library(sf)
-library(here) 
+library(here)
 loadfonts(dev = "win")
+```
 
+
+```{r, include=FALSE}
 world <- rnaturalearth::ne_countries(scale = 10, returnclass = "sp")
 box_cut <- rgeos::bbox2SP(n = 90, s = -90, w = -60, e = 90, proj4string = world@proj4string)
 world_crop <- rgeos::gDifference(world, box_cut)
@@ -109,28 +112,25 @@ tiny_countries2 <- rnaturalearthdata::tiny_countries50 %>%
 
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.width=9, fig.height=5, message=FALSE, warning=FALSE}
+```{r eval=FALSE, warning=FALSE, include=FALSE}
 tuvalu_map <- ggplot() +
   geom_sf(data = pacific_crop, fill = "lightgray", color = "lightgray") +
-  geom_sf(data = tiny_countries2, size = 1.5, color = paleta[1]) +
-  annotate("text", x = 173, y = -5, label = "Tuvalu", color = "white", 
-           family = "Didact Gothic", size = 3) +
-  #geom_sf(data = tiny_countries, size = 2, color = "red", alpha = 0) +
+  geom_sf(data = tiny_countries2, size = 2, color = paleta[1]) +
+  geom_sf(data = tiny_countries, size = 2, color = "red", alpha = 0) +
   coord_sf(expand = FALSE) +
-  theme_minimal() +
-  labs(x = "", y = "") +
+  theme_minimal() + 
   theme(panel.background = element_rect(fill = lighten("#272822", 1.4), color = lighten("#272822", 1.4)),
         #panel.border =  element_rect(fill = "#272822", color = "#272822"),
         text = element_text(color = "#ffffff", family = "Didact Gothic"),
         axis.text = element_text(color = "#ffffff", family = "Didact Gothic"),
         panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(),
-        panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(), 
         plot.background = element_rect(fill = "#272822", color = "#272822"))
-tuvalu_map
-ggsave(here::here("static", "img", "tuvalis.png") , dpi = 300, bg = "#272822", width = 4.38, height = 2.7)
+#ggsave(here::here("static", "img", "tuvalis.png") , dpi = 400, bg = "#272822")
 ```
 
-¿Alguna vez escuchaste hablar del país [Tuvalu](https://es.wikipedia.org/wiki/Tuvalu)? La primera vez que escuché sobre este país fue hace muchos años en una reunión del grupo de investigación de mi suegra. ¿Alguna vez escuchaste hablar de [Twitch](twitch.tv)? En este post te cuento lo que tienen en común. 
+
+¿Alguna vez escuchaste hablar del país [Tuvalu](https://es.wikipedia.org/wiki/Tuvalu)? La primera vez que escuché sobre este país fue hace muchos años en una reunión del grupo de investigación de mi suegra. ¿Alguna vez escuchaste hablar de [Twitch](https:://twitch.tv)? En este post te cuento lo que tienen en común. 
 
 Tuvalu es un país chiquito situado en la subregión polinésica de Oceanía. Su superficie es de alrededor de 26 kilómetros cuadrados y tiene una población estimada de 11.500 habitantes. Curiosamente, está localizada casi en los 180 grados de longitud:
 <img src = "/img/tuvalis.png" width = "100%">

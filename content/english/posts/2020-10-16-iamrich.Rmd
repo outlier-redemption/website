@@ -17,7 +17,7 @@ paleta = colorspace::rainbow_hcl(10, c=100, l=65)
 paleta = colorspace::rainbow_hcl(10)
 library(extrafont)
 loadfonts(dev = "win")
-library(ggplot2)
+library(ggplot2) 
 library(tidyverse)
 library(magrittr)
 lighten <- function(color, factor=1.4){
