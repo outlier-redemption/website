@@ -2,13 +2,12 @@ baseurl                  = "https://outlier-redemption.netlify.app/"           #
 languageCode             = "en-us"
 defaultContentLanguage   = "en"
 defaultContentLanguageInSubdir = true
-isMultilingual           = true
+isMultilingual           = false
 title                    = "outlier-redemption"
 theme = "hugo-theme-sam"
 pygmentsStyle            = "monokai"                        # https://help.farbox.com/pygments.html
 pygmentsCodefences       = true
 # googleAnalytics        = ""                               # Tracking code, eg. "UA-111111111-1"
-custom_css = ["css/custom.css"]
 
 [params]
     dateform             = "Mon Jan 02, 2006"
@@ -35,7 +34,7 @@ custom_css = ["css/custom.css"]
       link = "posts"
       text = "stories"
     [[languages.en.params.mainMenu]]
-      link = "subscription"
+      link = "https://tinyletter.com/outlier-redemption"
       text = "subscribe"
     [[languages.en.params.mainMenu]]
       link = "about"
@@ -48,7 +47,7 @@ custom_css = ["css/custom.css"]
       link = "posts"
       text = "historias"
     [[languages.es.params.mainMenu]]
-      link = "subscription"
+      link = "https://tinyletter.com/violetrzn"
       text = "suscribite"
     [[languages.es.params.mainMenu]]
       link = "about"
