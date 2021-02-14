@@ -34,7 +34,7 @@ pygmentsCodefences       = true
       link = "posts"
       text = "stories"
     [[languages.en.params.mainMenu]]
-      link = "subscription"
+      link = "https://tinyletter.com/outlier-redemption"
       text = "subscribe"
     [[languages.en.params.mainMenu]]
       link = "about"
@@ -47,7 +47,7 @@ pygmentsCodefences       = true
       link = "posts"
       text = "historias"
     [[languages.es.params.mainMenu]]
-      link = "subscription"
+      link = "https://tinyletter.com/violetrzn"
       text = "suscribite"
     [[languages.es.params.mainMenu]]
       link = "about"
