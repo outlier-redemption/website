@@ -39,7 +39,7 @@
         {{ end }}
         {{ end }}
         <p>
-<a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+<a href="{{ .Permalink | absLangURL}}">{{ .Language.LanguageName }}</a>
 </p>
 <p>
 <a href="https://outlier-redemption.netlify.app/en/">EN</a> | <a href="https://outlier-redemption.netlify.app/es/">ES</a>
