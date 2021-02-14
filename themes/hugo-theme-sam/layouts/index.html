@@ -33,7 +33,7 @@
 
         {{ else }}
         {{ range .Site.Sections }}
-            <a href="{{.RelPermalink}}" class="big-link">
+            <a href="{{.RelPermalink | absLangURL}}" class="big-link">
                 {{.Title | markdownify}}
             </a>
         {{ end }}
