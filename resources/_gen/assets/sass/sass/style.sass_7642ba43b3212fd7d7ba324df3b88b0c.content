@@ -47,6 +47,7 @@ a {
   color: #cccccc;
   text-decoration: none;
   transition: 0.5s ease;
+  font-weight: bold;
   background-image: linear-gradient(to left, #E495A5, #D89F7F, #BDAB66, #96B56C, #65BC8C, #39BEB1, #55B8D0, #91ACE1, #C29DDE, #DE94C8);
   -webkit-background-clip: text;
   color: transparent; }
