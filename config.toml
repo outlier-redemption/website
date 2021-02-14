@@ -35,7 +35,7 @@ custom_css = ["css/custom.css"]
       link = "posts"
       text = "stories"
     [[languages.en.params.mainMenu]]
-      link = "https://tinyletter.com/violetrzn"
+      link = "subscription"
       text = "subscribe"
     [[languages.en.params.mainMenu]]
       link = "about"
@@ -48,7 +48,7 @@ custom_css = ["css/custom.css"]
       link = "posts"
       text = "historias"
     [[languages.es.params.mainMenu]]
-      link = "https://tinyletter.com/violetrzn"
+      link = "subscription"
       text = "suscribite"
     [[languages.es.params.mainMenu]]
       link = "about"
