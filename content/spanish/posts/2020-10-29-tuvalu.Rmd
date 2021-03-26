@@ -155,8 +155,8 @@ ggplot(data_tuvalu) +
   theme_minimal() +
   theme(panel.background = element_rect(fill = lighten("#272822", 1.4), color = lighten("#272822", 1.2)),
         #panel.border =  element_rect(fill = "#272822", color = "#272822"),
-        text = element_text(color = "#ffffff", family = "Didact Gothic"),
-        axis.text = element_text(color = "#ffffff", family = "Didact Gothic"),
+        text = element_text(color = "white", family = "Didact Gothic"),
+        axis.text = element_text(color = "white", family = "Didact Gothic"),
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         plot.background = element_rect(fill = "#272822", color = "#272822"))
@@ -165,3 +165,6 @@ ggplot(data_tuvalu) +
 En los últimos 10 años, entre el 7.7% y el 10.2% del IBN de Tuvalu viene del dominio ".tv". Y eso solo por haber tenido la suerte de tener este dominio asignado.
 
 Este dominio ya era [tema de discusión](https://www.theguardian.com/technology/2004/jul/03/internationalnews.onlinesupplement) desde 2004, cuando los habitantes de la isla se horrorizaban porque una importante cantidad de las páginas porno del mundo estaban alojadas ahí. Según varios sitios de noticias (entre ellos The Washington Post), las autoridades de Tuvalu no están contentas con el contrato firmado con Verisign en el 2011. Por suerte, el acuerdo vence en 2021 y Tuvalu tiene grandes chances de renegociar un super contrato nuevo debido a la explosión de Twitch.  
+
+[Código](https://github.com/outlier-redemption/data-analysis/blob/main/02-tuvalu.R)
+[Datos:WorldBank](https://data.worldbank.org/indicator/NY.GNP.MKTP.CD?locations=TV)

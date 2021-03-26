@@ -8,7 +8,7 @@ tags: []
 showDate: yes
 ---
 
-Hi, there. This entry is about a special group of applications that can be found in the [Google Play store](https://play.google.com/store?hl=es&gl=US). I found about these apps procrastinating with data during [my PhD](https://www.universite-paris-saclay.fr/recherche/doctorat). The dataset is stored in  [Kaggle](https://www.kaggle.com/lava18/google-play-store-apps#googleplaystore.csv) and the last update was in 2019. 
+Hi, there. This entry is about a special group of applications that can be found in the [Google Play store](https://play.google.com/store?hl=es&gl=US). I found about these apps procrastinating with data during my PhD. The dataset is stored in  [Kaggle](https://www.kaggle.com/lava18/google-play-store-apps#googleplaystore.csv) and the last update was in 2019. 
 
 We can identify these apps by their prices. Let's make a plot of the app prices of the store. To do this, we choose to use an histogram. Histograms are a practical way of visualizing the way in which a set of values are distributed. We have to group the prices in bins and then count how many apps have a price that lies into each bin. The following graph shows the data: 
 
@@ -74,3 +74,7 @@ All names are equivalent to "I am rich". The developers of one of these apps des
 The dataset is a bit out-of-date. There was some cleaning-up, but, if you search for them, some of these apps still exist.
 
 Stay tuned for more facts about trashy humanity.
+
+[Code](https://github.com/outlier-redemption/data-analysis/blob/main/01-iamrich.R)
+[Data:Kaggle](https://www.kaggle.com/lava18/google-play-store-apps#googleplaystore.csv)
+
