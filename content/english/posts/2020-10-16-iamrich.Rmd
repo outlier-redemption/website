@@ -75,6 +75,8 @@ The dataset is a bit out-of-date. There was some cleaning-up, but, if you search
 
 Stay tuned for more facts about trashy humanity.
 
+<hr />
+
 [Code](https://github.com/outlier-redemption/data-analysis/blob/main/01-iamrich.R)
 [Data:Kaggle](https://www.kaggle.com/lava18/google-play-store-apps#googleplaystore.csv)
 
