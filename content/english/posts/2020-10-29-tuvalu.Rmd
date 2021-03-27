@@ -166,5 +166,8 @@ In the last 10 years, between 7.7% and 10.2% of the GNI of Tuvalu came from the 
 
 The Washington Post wrote that Tuvalu's authorities are not happy with the contract signed with Verisign, which is valid until 2021. Then, this year could be a great year for Tuvalu if they manage to establish a better contract given the Twitch explosion.  
 
+**Material:**
+
 [Code](https://github.com/outlier-redemption/data-analysis/blob/main/02-tuvalu.R)
+
 [Data:WorldBank](https://data.worldbank.org/indicator/NY.GNP.MKTP.CD?locations=TV)
