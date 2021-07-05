@@ -134,11 +134,11 @@ tuvalu_map <- ggplot() +
 ```
 
 
-¿Alguna vez escuchaste hablar del país [Tuvalu](https://es.wikipedia.org/wiki/Tuvalu)? La primera vez que escuché sobre este país fue hace muchos años en una reunión del grupo de investigación de mi suegra. ¿Alguna vez escuchaste hablar de [Twitch](https:://twitch.tv)? En este post te cuento lo que tienen en común. 
+¿Alguna vez escuchaste hablar del país [Tuvalu](https://es.wikipedia.org/wiki/Tuvalu)? La primera vez que escuché sobre este país fue hace muchos años en una reunión de un grupo de investigación de la facu. ¿Alguna vez escuchaste hablar de [Twitch](https:://twitch.tv)? En este post te cuento lo que tienen en común. 
 
 Tuvalu es un país chiquito situado en la subregión polinésica de Oceanía. Su superficie es de alrededor de 26 kilómetros cuadrados y tiene una población estimada de 11.500 habitantes. Curiosamente, está localizada casi en los 180 grados de longitud:   
 
-![Map focused around the country island Tuvalu, near      Australia.](/img/tuvalis.png){width=100%} 
+![](/img/tuvalis.png){width=100%} 
 
 Posiblemente hayas escuchado hablar de la plataforma de streaming Twitch. Su popularidad fue creciendo mucho en los últimos tiempos y fue recientemente comprada por [Amazon](http://amazon.com/). Quizás te hayas dado cuenta que la dirección de la plataforma termina en ".tv" (decimos que su dominio es .tv). Obvio, no? es una página de streaming. Pero, alguna vez te preguntaste qué hace falta hacer para poner tu página web en el dominio ".tv"? Bueno, hay que pagar, obviamente. Y cuando alguien paga para que su sitio termine en ".tv", implícitamente le paga a Tuvalu. De hecho, Tuvalu es un micro-estado suertudo de que le hayan asignado el dominio ".tv". El gobierno de Tuvalu vende los derechos del dominio desde hace bastante tiempo.
 
@@ -152,19 +152,16 @@ tuvalu_GNI <- c(24960328.95, 33312887.1, 28110318.44, 36589277.83, 37400840.02, 
 data_tuvalu <- tibble(years = tuvalu_years, GNI = tuvalu_GNI)  
 
 ggplot(data_tuvalu) +
-  geom_line(aes(x = years, y = GNI), size = 1.5, color = "white") +
-  geom_hline(yintercept = 5000000, color = paleta[1], size = 1.2, lty = 2) +
-  scale_y_continuous(limits = c(0, 70000000)) +
+  geom_line(aes(x = years, y = GNI), size = 1.5, color = "black") +
+  geom_hline(yintercept = 5000000, color = paleta[3], size = 1.2, lty = 2) +
+  scale_y_continuous(limits = c(0, 70000000), labels = scales::comma) +
   scale_x_continuous(limits = c(2011, 2019), breaks = c(2011,2013,2015,2017,2019)) +
   labs(x = "", y = "INB (dólares norteamericanos)", caption = "Fuente: data.worldbank.org") +
   theme_minimal() +
-  theme(panel.background = element_rect(fill = lighten("#272822", 1.4), color = lighten("#272822", 1.2)),
+  theme(
         #panel.border =  element_rect(fill = "#272822", color = "#272822"),
-        text = element_text(color = "white", family = "Didact Gothic"),
-        axis.text = element_text(color = "white", family = "Didact Gothic"),
-        panel.grid.minor.x = element_blank(),
-        panel.grid.minor.y = element_blank(),
-        plot.background = element_rect(fill = "#272822", color = "#272822"))
+        text = element_text(family = "Didact Gothic", size = 14),
+        axis.text = element_text(family = "Didact Gothic"))
 
 ```
 En los últimos 10 años, entre el 7.7% y el 10.2% del IBN de Tuvalu viene del dominio ".tv". Y eso solo por haber tenido la suerte de tener este dominio asignado.
