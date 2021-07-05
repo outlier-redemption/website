@@ -5,7 +5,7 @@ title: About
 
 Hello, this is outlier-redemption. This site is usually about giving (trashy) insights into (trashy) data. Nevertheless, it's sometimes about random/surprising facts coming from totally meaningful data.
 
-If you don't like something about this site, it's probably [Violeta](https://twitter.com/violetrzn)'s fault. It could also be due to the fact that she has no money to spend on this project, she is from Latin America. Thus, she's not going to pay for anything ~~at all~~ fancy. Although, she's not asking for money, it's already a kind of adopted philosophy: "Don't pay to a company for anything that you don't really need". 
+If you don't like something about this site, it's probably [Violeta](https://twitter.com/violetrzn)'s fault. It could also be due to the fact that she has no money to spend on this project. Thus, she's not going to pay for anything ~~at all~~ fancy. Although, she's not asking for money. 
 
 In the future, we plan to include [recommendations](/recommendations) of data visualizations about serious topics.   
 

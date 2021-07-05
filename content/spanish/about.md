@@ -7,7 +7,7 @@ translationKey: about
 
 Hola, esto es outlier-redemption. En general, este sitio es sobre historias (falopa) sobre datos (falopa). Sin embargo, a veces es sobre hechos sorprendentes que surgen del análisis de bases de datos serias.
 
-Si no te gusta algo de este sitio es probablemente culpa de [Violeta](https://twitter.com/violetrzn). También puede ser debido al hecho de que no tiene plata para gastar en este proyecto, es de Latino América. Por lo tanto, ella no va a pagar por nada ~~de nada~~ sofisticado. De todos modos, ella no está pidiendo dinero, ya es una especie de filosofía de vida: "No pagues a una empresa por nada que no necesites realmente". 
+Si no te gusta algo de este sitio es probablemente culpa de [Violeta](https://twitter.com/violetrzn). También puede ser debido al hecho de que no tiene plata para gastar en este proyecto. Por lo tanto, ella no va a pagar por nada ~~de nada~~ sofisticado. De todos modos, ella no está pidiendo dinero.
 
 En el futuro planeamos incluir [recomendaciones](/recommendations) de visualizaciones de datos sobre temas serios.   
 
