@@ -1,0 +1,21 @@
+<svg height="110" width = "110" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#E495A5"/>
+        <stop offset="11.1%" stop-color="#D89F7F" stop-opacity="1"/>
+        <stop offset="22.22%" stop-color="#BDAB66" stop-opacity="1"/>
+        <stop offset="33.33%" stop-color="#96B56C" stop-opacity="1"/>
+        <stop offset="44.44%" stop-color="#65BC8C" stop-opacity="1"/>
+        <stop offset="55.55%" stop-color="#39BEB1" stop-opacity="1"/>
+        <stop offset="66.66%" stop-color="#55B8D0" stop-opacity="1"/>
+        <stop offset="77.77%" stop-color="#91ACE1" stop-opacity="1"/>
+        <stop offset="88.88%" stop-color="#C29DDE" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#DE94C8"/>
+    </linearGradient>
+  </defs>
+  	<polygon points="52.5 5, 100 33, 100 77, 52.5 105, 5 77, 5 33"
+	stroke = "black"
+	fill = "url(#grad3)" 
+	stroke-width = "5"/>
+	<circle cx="52.5" cy="55" r="23" stroke="black" stroke-width="7" fill="none" />
+</svg>

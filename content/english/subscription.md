@@ -3,7 +3,7 @@ date: "2021-01-30T13:42:49-05:00"
 title: Subscribe to the newsletter
 ---
 
-This is a (free) newsletter that tries to redeem outliers. Receive twice a month in your inbox a data-driven story about an outlier. Spam free guarranted by [Violeta Roizman](https://twitter.com/violetrzn). 
+This is a (free) newsletter that tries to redeem outliers. Receive irregularly in your inbox a data-driven story about an outlier. Spam free guarranted by [Violeta](https://twitter.com/violetrzn). 
 
 
 <form style="border:1px solid #ccc;padding:3px;text-align:center;margin: 0 auto;

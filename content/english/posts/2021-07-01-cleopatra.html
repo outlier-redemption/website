@@ -1,0 +1,39 @@
+---
+title: Cleopatra
+author: Violeta Roizman
+date: '2021-06-15'
+slug: []
+categories: []
+tags: []
+showDate: yes
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>Hi again! I learned about this outlier on <a href="twitter.com">twitter</a>. I saw many people wondering why is Cleopatra a trending page on Wikipedia Spanish:</p>
+<center>
+<img src="/english/posts/2021-07-01-cleopatra_files/figure-html/twitterwiki.png" width="80%" alt ="Screenshot showing two tweets. The first one says 'why is Cleopatra' always a top read article on Wikipedia'. The second one says in Spanish: Could someone explain me why is Cleopatra the most visited term on Wikipedia each day'.">
+</center>
+<p>Then, I was curious and went to do some research on the available data to see what was going on. I came across the awesome package <a href="https://cran.r-project.org/web/packages/pageviews/pageviews.pdf">pageview</a> that allows us to get some data about the number of visits of Wikipedia articles. Exactly what I needed <a href="https://en.wikipedia.org/wiki/Happiness">=)</a>! And you can access the info from different Wiki “projects”, in this case Wiki ES (Wikipedia Spanish). So I got the information about which were the top visited articles in the past months, starting from January 2021. After removing the Home page and Search page from Wikipedia, I realized that indeed Cleopatra was the top visited article. The following bump chart (that I made thanks to the <a href="https://github.com/davidsjoberg/ggbump">ggbump</a> package following <a href="https://github.com/davidsjoberg/ggbump/wiki/My-year-on-Spotify">this code</a>) shows the ranking of the top 5 wikipedia articles in Spanish between January and May 2021. When the articles are not included in the top 5, they are represented on the bottom of the chart in faded gray. I hightlighted the ones that repeted the most on the top 5, these are: Cleopatra, the Periodic Table, Isabel II, and Translation. The rest of the articles of this ranking appear to be visited in relation to some punctual events.</p>
+<p><img src="/english/posts/2021-07-01-cleopatra_files/figure-html/unnamed-chunk-1-1.png" title="A figure that shows a bump or ranking plot of the top visited articles on Wikipedia in Spanish. 'Cleopatra', 'Tabla periódica de los elementos', 'Isabel II del Reino Unido' and 'Traduccion' are highlighted because they appear in more than one month. Cleopatra appears always first." alt="A figure that shows a bump or ranking plot of the top visited articles on Wikipedia in Spanish. 'Cleopatra', 'Tabla periódica de los elementos', 'Isabel II del Reino Unido' and 'Traduccion' are highlighted because they appear in more than one month. Cleopatra appears always first." width="672" /></p>
+<p>After this, I went to see the exact number of visits per day that the articles were having to understand the visit patterns. I plotted some of the top articles on the following line chart and highlighted the patterns corresponding to Cleopatra, the Periodic Table (that has a periodic pattern of visits!!!), and Marie Curie. On one hand, the figure shows a huge spike on the Marie Curie article pattern that corresponds to the <a href="https://www.infobae.com/america/entretenimiento/2021/04/15/madame-curie-todo-sobre-la-pelicula-que-ya-puede-verse-en-netflix/">launch of the Radioactive movie on Netflix</a> in Spanish on April, 15. On the other hand, Cleopatra article is constantly super visited with a daily number of visits around 100000, a lot more than the rest of the popular articles.</p>
+<p><img src="/english/posts/2021-07-01-cleopatra_files/figure-html/unnamed-chunk-2-1.png" title="Time series that shows the patterns of the number of visits to some Wikipedia articles with 'Cleopatra' and 'Tabla periódica de los Elementos' highlighted." alt="Time series that shows the patterns of the number of visits to some Wikipedia articles with 'Cleopatra' and 'Tabla periódica de los Elementos' highlighted." width="672" /></p>
+<p>And after seeing this, of course, I wanted to know the reason of this outlier. Related to this topic, @<a href="https://twitter.com/dredondosanchez">dredondosanchez</a> has a <a href="https://twitter.com/BotWikipedia">bot</a> that publishes every day the most visited articles on Wikipedia in Spanish. And I saw that he twitted this:</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+Con esto en mente… ¿Debería quitar la página de “Cleopatra” de lo más leído de <a href="https://twitter.com/BotWikipedia?ref_src=twsrc%5Etfw"><span class="citation">@BotWikipedia</span></a>?
+</p>
+— Daniel Redondo Sánchez (<span class="citation">@dredondosanchez</span>) <a href="https://twitter.com/dredondosanchez/status/1374382630729252875?ref_src=twsrc%5Etfw">March 23, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>He made a twitter poll asking: “Should I delete Cleopatra from the top of the daily most visited articles?.” It turns out that one of the default suggestions that Google Assistant made to users is to search Cleopatra on Wikipedia. And a lot of people seem to be doing this unintentionally after some seconds in case of no answer. It seems that the misterious is solved. I show you here a screenshot of my sister’s phone asking her to search Cleopatra on Wikipedia:</p>
+<center>
+<img src="/english/posts/2021-07-01-cleopatra_files/figure-html/cleopatra.jpg" style="width:300px;height:580px;" alt ="Screenshot of my sister's phone that shows the Google Assistant suggesting to search Cleopatra on Wikipedia.">
+</center>
+<p>See you soon for more random facts!</p>
+<div id="material" class="section level3">
+<h3>Material</h3>
+<p><a href="https://github.com/outlier-redemption/data-analysis/blob/main/03-wiki.R">Code</a></p>
+<p><a href="https://cran.r-project.org/web/packages/pageviews/pageviews.pdf">Data: pageviews package</a></p>
+</div>

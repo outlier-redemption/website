@@ -1,1 +1,10 @@
 {{ .Site.Params.footerText | markdownify }}
+
+<!-- Gallery Script 
+  {{ $script := resources.Get "js/gallery.js" | minify}}
+  <script src="{{ $script.Permalink }}"></script>
+  {{ $script := resources.Get "js/scripts.js" | minify}}
+<script src="{{ $script.Permalink }}"></script>
+  
+-->
+<script type="text/javascript" src="{{ "js/scripts.js" | relURL }}"></script>

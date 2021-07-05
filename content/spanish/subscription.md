@@ -3,7 +3,7 @@ date: "2021-01-30T13:42:49-05:00"
 title: Suscribite al newsletter
 ---
 
-Este es un newsletter gratuito sobre datos falopa. Recibí dos veces al mes en tu bandeja de entrada una historia cortita contada con datos. No vamos a mandarte ningún spam, garantizado por [Violeta Roizman](https://twitter.com/violetrzn). 
+Este es un newsletter gratuito sobre datos falopa. Recibí irregularmente en tu bandeja de entrada una historia cortita contada con datos. No vamos a mandarte ningún spam, garantizado por [Violeta](https://twitter.com/violetrzn). 
 
 
 <form style="border:1px solid #ccc;padding:3px;text-align:center;margin: 0 auto;

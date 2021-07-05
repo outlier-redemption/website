@@ -11,6 +11,13 @@
 <link rel="stylesheet" href="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous" media="screen">
 {{ end }}
 
+
+
+<!-- highlight.js -->
+{{ if .Site.Params.highlight | default false }} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/{{ .Site.Params.highlightStyle | default "default" }}.min.css"> {{ end }}
+
+
+
 <!-- Custom css -->
 {{ range .Site.Params.customCSS -}}
 {{ $style := resources.Get . }}
@@ -24,3 +31,15 @@
 {{ $defaultSkin := "css/default-skin.css" }}
 <link rel="stylesheet" href="{{ $defaultSkin | absURL }}">
 {{ end }}
+
+
+<!-- DarkMode -->
+<script>
+  const theme = localStorage.getItem('theme');
+  if (theme === "dark") {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+</script>
+
+<!-- JB: font awesome-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">

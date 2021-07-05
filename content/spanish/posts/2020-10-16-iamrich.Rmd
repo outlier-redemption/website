@@ -7,7 +7,7 @@ categories: []
 tags: []
 showDate: yes
 ---
-Holis! Esta entrega es sobre un grupo especial de aplicaciones que puede encontrarse en [Google Play store](https://play.google.com/store?hl=es&gl=US). Me enteré de la existencia de estas aplicaciones en mis tiempos de procrastinación durante [mi doctorado](https://www.universite-paris-saclay.fr/recherche/doctorat), analizando decenas de datasets totalmente random. Este dataset en particular está almacenado en el sitio  [Kaggle](https://www.kaggle.com/lava18/google-play-store-apps#googleplaystore.csv) y última actualización del mismo fue en 2019. 
+Holis! Esta entrega es sobre un grupo especial de aplicaciones que puede encontrarse en [Google Play store](https://play.google.com/store?hl=es&gl=US). Me enteré de la existencia de estas aplicaciones en mis tiempos de procrastinación durante mi doctorado, analizando decenas de datasets totalmente random. Este dataset en particular está almacenado en el sitio  [Kaggle](https://www.kaggle.com/lava18/google-play-store-apps#googleplaystore.csv) y última actualización del mismo fue en 2019.
 
 Podemos identificar a este curioso grupo por los precios de estas aplicaciones en la tienda. Hagamos un gráfico de los precios en dólares de cada una de las aplicaciones de Google Play. Para esto, usamos un gráfico que se llama histograma. Los histogramas son una forma práctica de visualizar la forma en la que un conjunto de valores se distribuyen. Para construirlo, tenemos que agrupar los precios en cajitas y después contar cuántas aplicaciones caen en cada uno de ellos. El gráfico siguiente muestra los datos:
 
@@ -17,7 +17,7 @@ paleta = colorspace::rainbow_hcl(10)
 library(extrafont)
 loadfonts(dev = "win")
 library(ggplot2)
-library(tidyverse)
+library(tidyverse) 
 library(magrittr)
 lighten <- function(color, factor=1.4){
     col <- col2rgb(color)
@@ -76,3 +76,9 @@ Todos los nombres son equivalentes a "Soy rico" en distintos idiomas. Los desarr
 El dataset está un poquito desactualizado. En el interín, hubo una limpieza de estas aplicaciones basura. Sin embargo, si buscás estás aplicaciones vas a encontrar que todavía existen [varias de ellas](https://play.google.com/store/apps/details?id=com.gianbattista_vivolo.The_richest&hl=es). El precio máximo de las apps varía según la región, por ejemplo en Europa es 349 euros.
 
 Quedate atent@ a la próxima entrega para más datos falopa sobre la humanidad.
+
+### Material   
+
+[Code](https://github.com/outlier-redemption/data-analysis/blob/main/01-iamrich.R)
+
+[Data:Kaggle](https://www.kaggle.com/lava18/google-play-store-apps#googleplaystore.csv)

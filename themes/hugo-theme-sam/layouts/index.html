@@ -4,11 +4,11 @@
 <head>
     {{ partial "head.html" . }}
     <title>{{ .Title | markdownify }}</title>
+
 </head>
 
 <body>
-    
-    {{ with .Site.Params.videoBackground }}
+        {{ with .Site.Params.videoBackground }}
         <video class="video" autoplay muted preload loop playsinline>
             {{ range .sources }}
                 <source
@@ -21,6 +21,7 @@
             <div id="overlay" style="background: {{ . | safeCSS }};"></div>
         {{ end }}
     {{ end }}
+
 
     <nav role="navigation" class="flex-container" id="splash">
 
@@ -39,13 +40,17 @@
         {{ end }}
         {{ end }}
         <p>
-<a href="{{ .Permalink | absLangURL}}">{{ .Language.LanguageName }}</a>
+<a href="{{ .Permalink | absLangURL}}"></a>
 </p>
 <p>
 <a href="https://outlier-redemption.netlify.app/en/">EN</a> | <a href="https://outlier-redemption.netlify.app/es/">ES</a>
 </p>
-    </nav>
-    
+<p>
+<a id="dark-mode-toggle"><i id="dark-mode-toggle--icon" class="icon-moon-o" aria-hidden="true"></i></a>
+</p>
+</nav>
+ 
 </body>
 
 </html>
+   <script type="text/javascript" src="{{ "js/scripts.js" | relURL }}"></script>

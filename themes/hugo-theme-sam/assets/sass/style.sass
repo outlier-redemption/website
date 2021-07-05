@@ -15,7 +15,7 @@ html
 body
     font-size: $body-size
     font-family: $font
-    color: $body-text
+    color: var(--h1-text-color)
     line-height: 2rem
     letter-spacing: 1.5px
     text-shadow: none
@@ -35,7 +35,8 @@ header
 h1,h2,h3
     margin-bottom: 0.5em
     font-family: 'Didact Gothic', sans-serif
-    opacity: 0.6
+    opacity: 1
+    color: var(--h1-text-color)
 
 
 li
@@ -48,21 +49,6 @@ ul
 
 p
     display: inline
-
-
-a
-    color: $links
-    text-decoration: none
-    +ease(0.5s)
-    font-weight: bold
-    &:hover
-        color: $links-hover
-        font-style: none
-    &:active
-        color: $links
-    background-image: linear-gradient(to left, #E495A5, #D89F7F, #BDAB66, #96B56C, #65BC8C, #39BEB1, #55B8D0, #91ACE1, #C29DDE, #DE94C8)
-    -webkit-background-clip: text
-    color: transparent
 
 hr
     +skinny-hr
@@ -83,6 +69,84 @@ nav
     flex-direction: row
     justify-content: flex-start
     align-items: center
+
+#grad3 
+  --color-stop: #f12c06
+  --color-bot: #faed34
+
+.inline-svg 
+  display: inline-block
+  height: 1.15rem
+  width: 1.15rem
+  top: 0.15rem
+  position: relative
+  &:hover
+    fill: #FFFFFF
+  &:active
+    fill: url(#grad3)
+    color: linear-gradient(to left, #E495A5, #D89F7F, #BDAB66, #96B56C, #65BC8C, #39BEB1, #55B8D0, #91ACE1, #C29DDE, #DE94C8)
+
+html 
+    color: var(--main-text-color)
+    background-color: var(--main-background-color)
+
+  
+body 
+    color: var(--main-text-color)
+    background-color: var(--main-background-color)
+
+a
+    text-decoration: none
+    +ease(0.5s)
+    font-weight: bold
+    &:hover
+        color: var(--a-hover-color)
+        font-style: none
+    &:focus
+        color: var(--a-hover-color)
+    &:active
+        color: var(--a-hover-color)
+    background-image: var(--a-background-image)
+    -webkit-background-clip: text
+    color: transparent
+ 
+article code 
+  color: white
+ 
+.icon-sun-o:before 
+   font-family: "Font Awesome 5 Free"
+   content: "\f185"
+   font-style: normal
+    
+.icon-moon-o:before 
+   font-family: "Font Awesome 5 Free"
+   content: "\f186"
+   font-style: normal
+ 
+/*===========DARK MODE==========*/
+html, html[data-theme="light"] 
+    --main-background-color: white
+    --main-text-color: #333333
+    --h1-text-color: black
+    --inline-code-background-color: #ffcccc
+    --code-background-color: #272822
+    --code-color: white
+    --a-background-image: linear-gradient(to left, #C3687C, #B47549, #978310, #6A8F27, #00975C, #00998B, #0093AF, #5F84C3, #9F71C0, #BE65A6)
+    --a-hover-color: black
+    
+
+
+
+
+html[data-theme="dark"] 
+    --main-background-color: #121212
+    --main-text-color: white
+    --h1-text-color: white
+    --inline-code-background-color: #0e141b
+    --code-background-color: #272822
+    --code-color: black
+    --a-background-image: linear-gradient(to left, #E495A5, #D89F7F, #BDAB66, #96B56C, #65BC8C, #39BEB1, #55B8D0, #91ACE1, #C29DDE, #DE94C8)
+    --a-hover-color: white
 
 .tag
     background-color: transparent

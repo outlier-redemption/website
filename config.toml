@@ -9,10 +9,12 @@ pygmentsStyle            = "monokai"                        # https://help.farbo
 pygmentsCodefences       = true
 # googleAnalytics        = ""                               # Tracking code, eg. "UA-111111111-1"
 
+
+
 [params]
     dateform             = "Mon Jan 02, 2006"
     dateformfull         = "Mon Jan 2 2006 15:04:05 EST"
-    favicon              = "sam.ico"
+    favicon              = "favi-out.ico"
     homepage             = "main"                           # What to call the home page link
     footerText           = "outlier-redemption."
 
@@ -22,8 +24,9 @@ pygmentsCodefences       = true
     title                = "outlier-redemption"
     # rss                = ""
 
+
 [params.videoBackground]
-    overlay = "#272822" # optional
+    overlay = "rgba(1, 0, 0, 0.4)" # optional
 
 [languages]
   [languages.en]
@@ -35,7 +38,7 @@ pygmentsCodefences       = true
       text = "stories"
     [[languages.en.params.mainMenu]]
       link = "subscription"
-      text = "subscribe"
+      text = "newsletter"
     [[languages.en.params.mainMenu]]
       link = "about"
       text = "about outlier-redemption"
@@ -48,7 +51,7 @@ pygmentsCodefences       = true
       text = "historias"
     [[languages.es.params.mainMenu]]
       link = "subscription"
-      text = "suscribite"
+      text = "newsletter"
     [[languages.es.params.mainMenu]]
       link = "about"
       text = "sobre outlier-redemption"

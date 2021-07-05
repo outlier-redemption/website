@@ -1,13 +1,13 @@
 ---
 title: Tuvalu
-author: Violeta Roizman
+author: ~
 date: '2020-10-29'
 slug: []
 categories: []
 tags: []
 showDate: yes
 ---
-
+ 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(extrafont)
@@ -15,10 +15,19 @@ library(rgeos)
 library(sf)
 library(here)
 loadfonts(dev = "win")
+
+lighten <- function(color, factor=1.4){
+    col <- col2rgb(color)
+    col <- col*factor
+    col <- rgb(t(col), maxColorValue=255)
+    col
+}
+
+paleta = colorspace::rainbow_hcl(10)
 ```
 
 
-```{r, include=FALSE}
+```{r, include=FALSE, eval = FALSE}
 world <- rnaturalearth::ne_countries(scale = 10, returnclass = "sp")
 box_cut <- rgeos::bbox2SP(n = 90, s = -90, w = -60, e = 90, proj4string = world@proj4string)
 world_crop <- rgeos::gDifference(world, box_cut)
@@ -54,12 +63,7 @@ world_crop <- rgeos::gDifference(world, box_cut)
 # 
 # tuvalu <- filter(pacific_crop, name_en == "Tuvalu") 
 # 
-lighten <- function(color, factor=1.4){
-    col <- col2rgb(color)
-    col <- col*factor
-    col <- rgb(t(col), maxColorValue=255)
-    col
-}
+
 # 
 # tiny_countries <- rnaturalearthdata::tiny_countries50 %>% 
 #   st_as_sf() %>%
@@ -68,7 +72,7 @@ lighten <- function(color, factor=1.4){
 #   # Also adds the coordinates to be used for labeling with geom_text_repel
 #   bind_cols(st_coordinates(.) %>% as.data.frame())
 # 
-paleta = colorspace::rainbow_hcl(10)
+
 # 
 # world_crop %>% 
 #   st_as_sf() %>% # change from sp to sf object/class
@@ -132,19 +136,20 @@ tuvalu_map <- ggplot() +
 
 ¿Alguna vez escuchaste hablar del país [Tuvalu](https://es.wikipedia.org/wiki/Tuvalu)? La primera vez que escuché sobre este país fue hace muchos años en una reunión del grupo de investigación de mi suegra. ¿Alguna vez escuchaste hablar de [Twitch](https:://twitch.tv)? En este post te cuento lo que tienen en común. 
 
-Tuvalu es un país chiquito situado en la subregión polinésica de Oceanía. Su superficie es de alrededor de 26 kilómetros cuadrados y tiene una población estimada de 11.500 habitantes. Curiosamente, está localizada casi en los 180 grados de longitud:
-<img src = "/img/tuvalis.png" width = "100%">
+Tuvalu es un país chiquito situado en la subregión polinésica de Oceanía. Su superficie es de alrededor de 26 kilómetros cuadrados y tiene una población estimada de 11.500 habitantes. Curiosamente, está localizada casi en los 180 grados de longitud:   
+
+![Map focused around the country island Tuvalu, near      Australia.](/img/tuvalis.png){width=100%} 
 
 Posiblemente hayas escuchado hablar de la plataforma de streaming Twitch. Su popularidad fue creciendo mucho en los últimos tiempos y fue recientemente comprada por [Amazon](http://amazon.com/). Quizás te hayas dado cuenta que la dirección de la plataforma termina en ".tv" (decimos que su dominio es .tv). Obvio, no? es una página de streaming. Pero, alguna vez te preguntaste qué hace falta hacer para poner tu página web en el dominio ".tv"? Bueno, hay que pagar, obviamente. Y cuando alguien paga para que su sitio termine en ".tv", implícitamente le paga a Tuvalu. De hecho, Tuvalu es un micro-estado suertudo de que le hayan asignado el dominio ".tv". El gobierno de Tuvalu vende los derechos del dominio desde hace bastante tiempo.
 
-En 2019, The Washington Post [publicó](https://www.washingtonpost.com/video-games/2019/12/23/tuvalu-is-tiny-island-nation-people-its-cashing-thanks-twitch/) que la empresa Verisign le paga alrededor de 5 millones de dólares por año a Tuvalu desde 2011 por el derecho a administrar su codiciado dominio (otro link en esta historia: The Washington Post es propiedad de [Jeff Bezos](https://mkorostoff.github.io/1-pixel-wealth/), el dueño de Amazon y por lo tanto el dueño de Twitch). Veamos qué fracción del Ingreso Nacional Bruto (INB)  de Tuvalu representa las ganancias provenientes de su dominio:
+En 2019, The Washington Post [publicó](https://www.washingtonpost.com/video-games/2019/12/23/tuvalu-is-tiny-island-nation-people-its-cashing-thanks-twitch/) que la empresa Verisign le paga alrededor de 5 millones de dólares por año a Tuvalu desde 2011 por el derecho a administrar su codiciado dominio (otro link en esta historia: The Washington Post es propiedad de [Jeff Bezos](https://mkorostoff.github.io/1-pixel-wealth/), el dueño de Amazon y por lo tanto el dueño de Twitch). Veamos qué fracción del Ingreso Nacional Bruto (INB)  de Tuvalu representa las ganancias provenientes de su dominio: 
 
 ```{r, echo=FALSE, out.width="100%", fig.width=9, fig.height=5, message=FALSE, warning=FALSE}
 tuvalu_years <- c(2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019)
 
 tuvalu_GNI <- c(24960328.95, 33312887.1, 28110318.44, 36589277.83, 37400840.02, 37830798.19, 48173709.31, 49241989.6, 47385821.24, 50918730.51, 57742238.27, 49401532.41, 58017281.33, 49698846.22, 55661783.49, 55456437.7, 58095263.64, 64107890.02, 65326451.16)
 
-data_tuvalu <- tibble(years = tuvalu_years, GNI = tuvalu_GNI) 
+data_tuvalu <- tibble(years = tuvalu_years, GNI = tuvalu_GNI)  
 
 ggplot(data_tuvalu) +
   geom_line(aes(x = years, y = GNI), size = 1.5, color = "white") +
@@ -166,7 +171,7 @@ En los últimos 10 años, entre el 7.7% y el 10.2% del IBN de Tuvalu viene del d
 
 Este dominio ya era [tema de discusión](https://www.theguardian.com/technology/2004/jul/03/internationalnews.onlinesupplement) desde 2004, cuando los habitantes de la isla se horrorizaban porque una importante cantidad de las páginas porno del mundo estaban alojadas ahí. Según varios sitios de noticias (entre ellos The Washington Post), las autoridades de Tuvalu no están contentas con el contrato firmado con Verisign en el 2011. Por suerte, el acuerdo vence en 2021 y Tuvalu tiene grandes chances de renegociar un super contrato nuevo debido a la explosión de Twitch.  
 
-**Material:**
+### Material
 
 [Código](https://github.com/outlier-redemption/data-analysis/blob/main/02-tuvalu.R)
 
