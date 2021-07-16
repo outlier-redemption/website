@@ -1,0 +1,38 @@
+---
+title: Year Progress
+author: Violeta Roizman
+date: '2021-07-15'
+slug: yearprogress
+categories: []
+tags: []
+showDate: yes
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>Hi again! This post is about the progress of each year and the way people react to it. I procrastinated with this data during 2020, isolated at my place. It was July and I saw a lot of people retweeting this tweet:</p>
+<blockquote class="twitter-tweet">
+<p lang="und" dir="ltr">
+▓▓▓▓▓▓▓▓░░░░░░░ 50%
+</p>
+— Year Progress (<span class="citation">@year_progress</span>) <a href="https://twitter.com/year_progress/status/1278478498533904384?ref_src=twsrc%5Etfw">July 2, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>If you don’t know the @<a href="https://twitter.com/year_progress">year_progress</a> twitter account, it’s basically an account that only tweets the percentage of the year that has already passed, represented by a bar, as if you were waiting for the year to load. So, I was curious about which are the most retweeted “progress of the year” bars. Take a second to think about this.</p>
+<p>What I expected at that moment was three main type of popular percentages of the year. “Yay, this new year is going to be great”, “WFT, already half/a quarter of the year passed”, and “Thanks god, year is finishing”. Regarding the second group, I expected it to be in round percentaged like quarters (25%, 75%) or multiples of 10% and maybe 5%.</p>
+<p>Then, I got the data from twitter and made a bar chart. In this bar chart, I represented the average number of retweets of each percentage of the year, from 0% to 100%.</p>
+<p><img src="/english/posts/2021-07-15-yearprogress_files/figure-html/unnamed-chunk-2-1.png" title="The image shows a bar plot of the number of retweets (y axis) that get each percentage of the year from 0% to 100% on the x axis. There are four values much larger than the rest." alt="The image shows a bar plot of the number of retweets (y axis) that get each percentage of the year from 0% to 100% on the x axis. There are four values much larger than the rest." width="672" /></p>
+<p>This bar chart shows that there are some particular percentages of the year that are much more popular than the rest. Let’s take different numbers of retweets as thresholds and see which are the percentages that have more retweets (on the right).</p>
+<p><img src="/english/posts/2021-07-15-yearprogress_files/figure-html/unnamed-chunk-3-1.png" title="The image shows three bar plots of the number of retweets that get each percentage of the year from 0% to 100%. Each bar plot has a threshold represented as an horizontal dashed line and the percentages that are larger than the threshold are highlighted on the right." alt="The image shows three bar plots of the number of retweets that get each percentage of the year from 0% to 100%. Each bar plot has a threshold represented as an horizontal dashed line and the percentages that are larger than the threshold are highlighted on the right." width="672" /></p>
+<p>Okay, where is the outlier? To see this, I splited up the numbers in two groups: the ones that I expected to be popular, and the ones I didn’t expect them to be popular. I ploted both in the following figure, the expected on the left, and the not expected on the right. I colored in blue the ones that are actually most popular, and there is only one that stands out from its neighbors: 69%.</p>
+<p><img src="/english/posts/2021-07-15-yearprogress_files/figure-html/unnamed-chunk-4-1.png" title="The image shows a figure highlighting the most popular percentages. On the left there is the group of numbers that I expected to be popular (0, 1, multiples of 5 and 10, 33, and 66). On the right we find the rest of the numbers. 69 stands out as the only percentage that was not expected to be popular but turned out it is." alt="The image shows a figure highlighting the most popular percentages. On the left there is the group of numbers that I expected to be popular (0, 1, multiples of 5 and 10, 33, and 66). On the right we find the rest of the numbers. 69 stands out as the only percentage that was not expected to be popular but turned out it is." width="672" /></p>
+<p>69% is a clear outlier, why is it so popular? Well, that’s a sex position number that has become a meme in the internet universe. And then, people are nonsensely retweeting the bar corresponding to 69% because of this. BTW, it took me one hour to realize this fact.</p>
+<p>After <a href="https://twitter.com/violetrzn/status/1279407334813577217?s=20">tweeting these results</a> at that moment, I was asked to plot the number of retweets versus the day of the year to see the spikes. I did it and it was very curious to see that the year was kind of sliced by the spikes. These spikes were representing 50%, 69%, and 100%/0%, instead of the most intuitive 25%, 50%, 75%, and 100%/0%.</p>
+<p><img src="/english/posts/2021-07-15-yearprogress_files/figure-html/unnamed-chunk-5-1.png" title="The image shows a plot line of the daily number of retweets of the @year_progress account. 50%, 69%, and 100% are spikes and are highlighted with vertical dashed lines." alt="The image shows a plot line of the daily number of retweets of the @year_progress account. 50%, 69%, and 100% are spikes and are highlighted with vertical dashed lines." width="672" /></p>
+<p>Goodbye! Stay tuned for more facts about trashy internet humanity.</p>
+<div id="material" class="section level3">
+<h3>Material</h3>
+<p><a href="https://github.com/outlier-redemption/data-analysis/blob/main/04-yearprogress.R">Code</a></p>
+<p><a href="https://twitter.com/year_progress">Data: rtweet::get_timeline(“<span class="citation">@year_progress</span>”, n = 18000)</a></p>
+</div>

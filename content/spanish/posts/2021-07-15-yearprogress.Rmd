@@ -1,0 +1,206 @@
+---
+title: Year Progress
+author: Violeta Roizman
+date: '2021-07-15'
+slug: yearprogress
+categories: []
+tags: []
+showDate: yes
+---
+
+Hola de nuevo :) Este posteo es sobre el progreso del año en curso y cómo la gente reacciona a eso. Estuve jugando con estos datos durante el 2020, confinada en mi casa. Era julio y vi a bastante gente retuiteando lo siguiente:
+
+<blockquote class="twitter-tweet"><p lang="und" dir="ltr">▓▓▓▓▓▓▓▓░░░░░░░ 50%</p>&mdash; Year Progress (@year_progress) <a href="https://twitter.com/year_progress/status/1278478498533904384?ref_src=twsrc%5Etfw">July 2, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Si no conocés la cuenta de twitter @[year_progress](https://twitter.com/year_progress), es básicamente una cuenta que cada día tuitea el porcentaje del año que ya pasó, representado por una barra, como si estuvieramos esperando que el año se cargase. Entonces, me dió curiosidad saber cuáles son las barras de progreso del año más retuiteadas. Tomate un segundo para pensar cuáles serían.
+
+Lo que yo esperaba eran tres tipos de porcentaje del año populares. "Qué bueno! Este año que empieza va a ser genial",  "WFT, ya pasó la mitad/cuarta parte del año", y "Al fin se termina este año". Con respecto al segundo grupo, esperaba porcentajes redondos como cuartos (25%, 75%) o múltiplos de 10% o quizás de 5%.
+
+Así fue que obtuve los datos de twitter e hice un gráfico de barras. En este gráfico de barras, representé el número promedio de retuits de cada porcentaje del año, desde 0% hasta 100%.
+
+```{r , echo = FALSE, message=FALSE, warning=FALSE}
+paleta = colorspace::rainbow_hcl(10, c=100, l=65)
+library(rtweet)
+library(tidyverse)
+library(extrafont)
+library(lubridate)
+library(ggtext)
+library(patchwork)
+
+loadfonts(dev = "win")
+
+tweets = read_csv("tweets.csv") %>%
+  filter(year(date) > 2017)
+```
+
+
+```{r , echo = FALSE, message=FALSE, warning=FALSE, fig.alt="The image shows a bar plot of the number of retweets (y axis) that get each percentage of the year from 0% to 100% on the x axis. There are four values much larger than the rest."}
+tweets %>%
+  group_by(percentage) %>%
+  summarise(RT = mean(retweet_count)) %>%
+  ggplot() +
+  geom_col(aes(x = as.numeric(percentage)/100, y = RT), fill = "black") +
+  theme_minimal() +
+  labs(y = "Conteo de retweets", x = "",  title =  paste0("Las barras de @year_progress más populares"),
+       caption = "Fuente: @year_progress tweet list.") +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(labels = scales::percent) +
+  theme(plot.title.position = "plot", 
+        text = element_text(family = "Didact Gothic"),
+        plot.title = element_markdown(size = 18),
+        plot.subtitle = element_markdown(size = 15))
+```
+
+Este gráfico de barras muestra que hay algunos porcentajes particularmente más populares que el resto. Tomemos diferentes números de retuits como límites y veamos en la derecha cuáles son los porcentajes que tienen más retuits que estos límites. 
+
+```{r , echo = FALSE, message=FALSE, warning=FALSE, fig.height= 7, fig.alt="The image shows three bar plots of the number of retweets that get each percentage of the year from 0% to 100%. Each bar plot has a Límite represented as an horizontal dashed line and the percentages that are larger than the Límite are highlighted on the right."}
+p1 = tweets %>%
+  group_by(percentage) %>%
+  summarise(RT = mean(retweet_count)) %>%
+  ggplot() +
+  geom_col(aes(x = as.numeric(percentage)/100, y = RT, fill = RT > 10000)) +
+  geom_hline(yintercept = 10000, color = "black", linetype = 2, size = 0.8) +
+  theme_minimal() +
+  labs(y = "Conteo de retweets", x = "",  title =  paste0("Límite: 10000 RT"),
+       caption = "Fuente: @year_progress tweet list.") +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("black", paleta[8])) +
+  theme(plot.title.position = "plot", 
+        legend.position = "none",
+        text = element_text(family = "Didact Gothic"),
+        plot.title = element_markdown(size = 13))
+
+p2 = tweets %>%
+  group_by(percentage) %>%
+  summarise(RT = mean(retweet_count)) %>%
+  ggplot() +
+  geom_col(aes(x = as.numeric(percentage)/100, y = RT, fill = RT > 5000)) +
+  geom_hline(yintercept = 5000, color = "black", linetype = 2, size = 0.8) +
+  theme_minimal() +
+  labs(y = "Conteo de retweets", x = "",  title =  paste0("Límite: 5000 RT"),
+       caption = "Fuente: @year_progress tweet list.") +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("black", paleta[8])) +
+  theme(plot.title.position = "plot", 
+        legend.position = "none",
+        text = element_text(family = "Didact Gothic"),
+        plot.title = element_markdown(size = 13))
+
+p3 = tweets %>%
+  group_by(percentage) %>%
+  summarise(RT = mean(retweet_count)) %>%
+  ggplot() +
+  geom_col(aes(x = as.numeric(percentage)/100, y = RT, fill = RT > 2000)) +
+  geom_hline(yintercept = 2000, color = "black", linetype = 2, size = 0.8) +
+  theme_minimal() +
+  labs(y = "Conteo de retweets", x = "",  title =  paste0("Límite: 2000 RT"),
+       caption = "Fuente: @year_progress tweet list.") +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("black", paleta[8])) +
+  theme(plot.title.position = "plot", 
+        legend.position = "none",
+        text = element_text(family = "Didact Gothic"),
+        plot.title = element_markdown(size = 13))
+
+table = tweets %>%
+  group_by(percentage) %>%
+  summarise(RT = mean(retweet_count)) 
+
+#paste0(pull(filter(table, RT>=10000), percentage), collapse = ", ")
+#paste0(pull(filter(table, RT>=5000), percentage), collapse = ", ")
+#paste0(pull(filter(table, RT>=2000), percentage), collapse = ", ")
+
+(p1+ grid::textGrob("0, 50, 69, 99, 100", gp=grid::gpar(col=paleta[8], fontfamily  = "Didact Gothic", fontface = "bold")))/
+  (p2+ grid::textGrob("0, 25, 50, 69, 90,\n98, 99, 100", gp=grid::gpar(col=paleta[8], fontfamily  = "Didact Gothic", fontface = "bold")))/
+  (p3+ grid::textGrob("0, 1, 5, 10, 20,\n25, 30, 33, 40, 50,\n60, 69, 70, 75, 80,\n85, 90, 91, 92, 93,\n94, 95, 96, 97, 98,\n99, 100", gp=grid::gpar(col=paleta[8], fontfamily  = "Didact Gothic", fontface = "bold")))
+```
+
+Okay, cuál es el outlier? Para ver esto, dividí los números del 0% al 100 en dos grupos: los que pensaba que iban a ser populares y los que no. Grafiqué ambos grupos en la siguiente figura y coloreé en azul los porcentajes que efectivamente son populares. Así, solo un porcentaje llama la atención entre sus vecinos: 69%. 
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE, fig.height = 4, fig.alt="The image shows a figure highlighting the most popular percentages. On the left there is the group of numbers that I expected to be popular (0, 1, multiples of 5 and 10, 33, and 66). On the right we find the rest of the numbers. 69 stands out as the only percentage that was not expected to be popular but turned out it is."}
+datis = tibble::tibble(number = 1 : 100, x = ((1:100)-1) %% 10 + 1, y = 10 - ((1:100)-1) %/%10) %>%
+  bind_rows(tibble(number = 0, x = 0, y = 10))
+
+expected = unique(c(setdiff(pull(filter(table, RT>=2000), percentage) , 69), seq(5, 95, by = 5), 66))
+
+expected_plus = setdiff(pull(filter(table, RT>=2000), percentage) , 69)
+
+p12 = ggplot(datis) +
+  geom_point(aes(x, y, color = number %in% expected)) +
+  geom_text(data = datis %>% filter(number %in% expected), aes(x, y + 0.5 , label = number), color = "black") +
+  geom_point(data = datis %>% filter(number %in% expected_plus), aes(x, y) , color = paleta[8]) +
+  geom_text(data = datis %>% filter(number %in% expected_plus), aes(x, y + 0.5 , label = number), color = paleta[8]) +
+  coord_equal() +
+  scale_color_manual(values = c("gray", "black")) +
+  theme_void() +
+  labs(title = "Las que esperaba") +
+  theme(legend.position = "none",
+        plot.title.position = "plot",
+        plot.title = element_text(size = 13),
+        text = element_text(family = "Didact Gothic"))
+
+p13 = ggplot(datis) +
+  geom_point(aes(x, y, color = ! number %in% expected)) +
+  geom_point(data = datis %>% filter(number == 69), aes(x, y), color = paleta[8]) +
+  geom_text(data = datis %>% filter(! number %in% expected), aes(x, y + 0.5 , label = number), color = "black") +
+  geom_text(data = datis %>% filter(number == 69), aes(x, y + 0.5 , label = number), color = paleta[8]) +
+  coord_equal() +
+  scale_color_manual(values = c("gray", "black")) +
+  theme_void() +
+  labs(title = "Las que no esperaba") +
+  theme(legend.position = "none",
+        plot.title.position = "plot",
+        plot.title = element_text(size = 13),
+        text = element_text(family = "Didact Gothic"))
+
+p12 + p13 +
+  plot_annotation(title = "Las barras de @year_progress más populares", theme = theme(plot.title = element_text(size = 18, family = "Didact Gothic", color = paleta[8])))
+```
+
+69% es claramente un outlier, por qué? Bueno, 69 representa una posición sexual que se volvió un meme en el mundo de internet. Y entonces, la gente retuitea sin sentido la barra correspondiente al 69% por este motivo. 
+
+Después de haber [tuiteado los resultados](https://twitter.com/violetrzn/status/1279407334813577217?s=20) en ese momento, me pidieron que hiciera un gráfico de la cantidad de retuits de la cuenta para cada tuit del año para poder ver los picos. Lo hice y es curioso ver como el año está dividido por los picos 50%, 69%, y 100%, en lugar de los más intuitivos 25%, 50%, 75%, and 100%.
+
+```{r , echo = FALSE, message=FALSE, warning=FALSE, fig.alt="The image shows a plot line of the daily number of retweets of the @year_progress account. 50%, 69%, and 100% are spikes and are highlighted with vertical dashed lines."}
+tweets %>%
+  ggplot() +
+  geom_line(aes(x = date, y = retweet_count), size = 1) +
+  theme_minimal() +
+  geom_vline(xintercept = pull(tweets %>% filter(percentage == "69"), 
+                               date),
+             color = paleta[1], 
+             linetype = 2,
+             size = 0.8) +
+  geom_vline(xintercept = pull(tweets %>% filter(percentage == "50"), 
+                               date),
+             color = paleta[3], 
+             linetype = 2,
+             size = 0.8) +
+  geom_vline(xintercept = pull(tweets %>% filter(percentage == "100"), 
+                               date),
+             color = paleta[6], 
+             linetype = 2,
+             size = 0.8) +
+  labs(y = "Conteo de retweets", x = "", 
+       subtitle =  paste0("Número diario de retuits de  @year_progress.") , title =  paste0("<span style='color: ", paleta[3], ";'>50% </span>, <span style='color: ", paleta[1], ";'>69%</span>, y <span style='color: ", paleta[6], ";'>100%</span>"),
+       caption = "Fuente: @year_progress tweet list.") +
+  scale_x_date(expand = c(0, 0), breaks = seq(as.Date("2015-12-01"), as.Date("2021-06-01"), by="6 months"),
+               date_labels = "%b %Y", ) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme(plot.title.position = "plot", 
+        text = element_text(family = "Didact Gothic"),
+        plot.title = element_markdown(size = 18),
+        plot.subtitle = element_markdown(size = 15))
+```
+
+Nos vemos la próxima con más datos falopa :).
+
+### Material
+
+[Code](https://github.com/outlier-redemption/data-analysis/blob/main/04-yearprogress.R)
+
+[Data: rtweet::get_timeline("@year_progress", n = 18000)](https://twitter.com/year_progress)
+

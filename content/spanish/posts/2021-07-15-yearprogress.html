@@ -1,0 +1,38 @@
+---
+title: Year Progress
+author: Violeta Roizman
+date: '2021-07-15'
+slug: yearprogress
+categories: []
+tags: []
+showDate: yes
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>Hola de nuevo :) Este posteo es sobre el progreso del año en curso y cómo la gente reacciona a eso. Estuve jugando con estos datos durante el 2020, confinada en mi casa. Era julio y vi a bastante gente retuiteando lo siguiente:</p>
+<blockquote class="twitter-tweet">
+<p lang="und" dir="ltr">
+▓▓▓▓▓▓▓▓░░░░░░░ 50%
+</p>
+— Year Progress (<span class="citation">@year_progress</span>) <a href="https://twitter.com/year_progress/status/1278478498533904384?ref_src=twsrc%5Etfw">July 2, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Si no conocés la cuenta de twitter @<a href="https://twitter.com/year_progress">year_progress</a>, es básicamente una cuenta que cada día tuitea el porcentaje del año que ya pasó, representado por una barra, como si estuvieramos esperando que el año se cargase. Entonces, me dió curiosidad saber cuáles son las barras de progreso del año más retuiteadas. Tomate un segundo para pensar cuáles serían.</p>
+<p>Lo que yo esperaba eran tres tipos de porcentaje del año populares. “Qué bueno! Este año que empieza va a ser genial”, “WFT, ya pasó la mitad/cuarta parte del año”, y “Al fin se termina este año”. Con respecto al segundo grupo, esperaba porcentajes redondos como cuartos (25%, 75%) o múltiplos de 10% o quizás de 5%.</p>
+<p>Así fue que obtuve los datos de twitter e hice un gráfico de barras. En este gráfico de barras, representé el número promedio de retuits de cada porcentaje del año, desde 0% hasta 100%.</p>
+<p><img src="/spanish/posts/2021-07-15-yearprogress_files/figure-html/unnamed-chunk-2-1.png" title="The image shows a bar plot of the number of retweets (y axis) that get each percentage of the year from 0% to 100% on the x axis. There are four values much larger than the rest." alt="The image shows a bar plot of the number of retweets (y axis) that get each percentage of the year from 0% to 100% on the x axis. There are four values much larger than the rest." width="672" /></p>
+<p>Este gráfico de barras muestra que hay algunos porcentajes particularmente más populares que el resto. Tomemos diferentes números de retuits como límites y veamos en la derecha cuáles son los porcentajes que tienen más retuits que estos límites.</p>
+<p><img src="/spanish/posts/2021-07-15-yearprogress_files/figure-html/unnamed-chunk-3-1.png" title="The image shows three bar plots of the number of retweets that get each percentage of the year from 0% to 100%. Each bar plot has a Límite represented as an horizontal dashed line and the percentages that are larger than the Límite are highlighted on the right." alt="The image shows three bar plots of the number of retweets that get each percentage of the year from 0% to 100%. Each bar plot has a Límite represented as an horizontal dashed line and the percentages that are larger than the Límite are highlighted on the right." width="672" /></p>
+<p>Okay, cuál es el outlier? Para ver esto, dividí los números del 0% al 100 en dos grupos: los que pensaba que iban a ser populares y los que no. Grafiqué ambos grupos en la siguiente figura y coloreé en azul los porcentajes que efectivamente son populares. Así, solo un porcentaje llama la atención entre sus vecinos: 69%.</p>
+<p><img src="/spanish/posts/2021-07-15-yearprogress_files/figure-html/unnamed-chunk-4-1.png" title="The image shows a figure highlighting the most popular percentages. On the left there is the group of numbers that I expected to be popular (0, 1, multiples of 5 and 10, 33, and 66). On the right we find the rest of the numbers. 69 stands out as the only percentage that was not expected to be popular but turned out it is." alt="The image shows a figure highlighting the most popular percentages. On the left there is the group of numbers that I expected to be popular (0, 1, multiples of 5 and 10, 33, and 66). On the right we find the rest of the numbers. 69 stands out as the only percentage that was not expected to be popular but turned out it is." width="672" /></p>
+<p>69% es claramente un outlier, por qué? Bueno, 69 representa una posición sexual que se volvió un meme en el mundo de internet. Y entonces, la gente retuitea sin sentido la barra correspondiente al 69% por este motivo.</p>
+<p>Después de haber <a href="https://twitter.com/violetrzn/status/1279407334813577217?s=20">tuiteado los resultados</a> en ese momento, me pidieron que hiciera un gráfico de la cantidad de retuits de la cuenta para cada tuit del año para poder ver los picos. Lo hice y es curioso ver como el año está dividido por los picos 50%, 69%, y 100%, en lugar de los más intuitivos 25%, 50%, 75%, and 100%.</p>
+<p><img src="/spanish/posts/2021-07-15-yearprogress_files/figure-html/unnamed-chunk-5-1.png" title="The image shows a plot line of the daily number of retweets of the @year_progress account. 50%, 69%, and 100% are spikes and are highlighted with vertical dashed lines." alt="The image shows a plot line of the daily number of retweets of the @year_progress account. 50%, 69%, and 100% are spikes and are highlighted with vertical dashed lines." width="672" /></p>
+<p>Nos vemos la próxima con más datos falopa :).</p>
+<div id="material" class="section level3">
+<h3>Material</h3>
+<p><a href="https://github.com/outlier-redemption/data-analysis/blob/main/04-yearprogress.R">Code</a></p>
+<p><a href="https://twitter.com/year_progress">Data: rtweet::get_timeline(“<span class="citation">@year_progress</span>”, n = 18000)</a></p>
+</div>
