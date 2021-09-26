@@ -118,7 +118,7 @@ table = tweets %>%
   (p3+ grid::textGrob("0, 1, 5, 10, 20,\n25, 30, 33, 40, 50,\n60, 69, 70, 75, 80,\n85, 90, 91, 92, 93,\n94, 95, 96, 97, 98,\n99, 100", gp=grid::gpar(col=paleta[8], fontfamily  = "Didact Gothic", fontface = "bold")))
 ```
 
-Okay, where is the outlier? To see this, I splited up the numbers in two groups: the ones that I expected to be popular, and the ones I didn't expect them to be popular. I ploted both in the following figure, the expected on the left, and the not expected on the right.  I colored in blue the ones that are actually most popular, and there is only one that stands out from its neighbors: 69%. 
+Okay, where is the outlier? To see this, I splited up the numbers into two groups: the ones that I expected to be popular, and the ones I didn't expect them to be popular. I ploted both in the following figure, the expected on the left, and the not expected on the right.  I colored in blue the ones that are actually most popular, and there is only one that stands out from its neighbors: 69%. 
 
 ```{r, echo = FALSE, message=FALSE, warning=FALSE, fig.height = 4, fig.alt="The image shows a figure highlighting the most popular percentages. On the left there is the group of numbers that I expected to be popular (0, 1, multiples of 5 and 10, 33, and 66). On the right we find the rest of the numbers. 69 stands out as the only percentage that was not expected to be popular but turned out it is."}
 datis = tibble::tibble(number = 1 : 100, x = ((1:100)-1) %% 10 + 1, y = 10 - ((1:100)-1) %/%10) %>%

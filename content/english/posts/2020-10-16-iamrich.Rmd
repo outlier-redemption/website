@@ -89,7 +89,7 @@ All names are equivalent to "I am rich". The developers of one of these apps des
 > The icon is really sexy and the app itself shows a beautiful luxury diamond.
 > This app maybe is the most expensive app on the market and it's based on other similar "I'm rich" type of apps.
 
-The dataset is a bit out-of-date. There was some cleaning-up, but, if you search for them, some of these apps [still exist](https://play.google.com/store/apps/details?id=com.gianbattista_vivolo.The_richest&hl=en). Furthermore, we know that the maximum possible price is different depending on the location. For example, the bound in 349 euros in Europe.
+The dataset is a bit out-of-date. There was some cleaning-up, but, if you search for them, some of these apps [still exist](https://play.google.com/store/apps/details?id=com.gianbattista_vivolo.The_richest&hl=en). Furthermore, we know that the maximum possible price is different depending on the location. For example, the limit in Europe is currently 349 euros.
 
 Stay tuned for more facts about trashy humanity.
 
