@@ -31,7 +31,7 @@ apps <- readr::read_csv("https://raw.githubusercontent.com/cienciadedatos/datos-
 
 ggplot(apps) +
   geom_histogram(aes(x=precio), fill = paleta[10], bins = 33) +
-  scale_y_continuous(expand=c(0, 0)) +
+  scale_y_continuous() +
   ggforce::geom_ellipse(mapping = aes(x0 = 400, y0 = 0, a = 30, b = 1000, angle = 0), color = paleta[10], size = 1.2) +
   labs(y = "", x = "price", caption = "Source: Kaggle dataset.") +
   theme(text = element_text(color = "black", family = "Didact Gothic", size = 12),
