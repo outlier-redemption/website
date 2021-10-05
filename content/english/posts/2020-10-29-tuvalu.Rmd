@@ -65,7 +65,7 @@ tiny_countries <- rnaturalearthdata::tiny_countries50 %>%
 
 tiny_countries2 <- rnaturalearthdata::tiny_countries50 %>% 
   st_as_sf() %>%
-  filter(name == "Tuvalu") %>%
+  filter(NAME == "Tuvalu") %>%
   st_shift_longitude() %>% 
   st_crop(c(xmin = 90, xmax = 230, ymin = -50, ymax = 30)) %>% 
   # Also adds the coordinates to be used for labeling with geom_text_repel
@@ -87,7 +87,7 @@ tiny_countries2 <- rnaturalearthdata::tiny_countries50 %>%
 ```{r eval=FALSE, warning=FALSE, include=FALSE}
 tuvalu_map <- ggplot() +
   geom_sf(data = pacific_crop, fill = "lightgray", color = "lightgray") +
-  geom_sf(data = tiny_countries2, size = 2, color = paleta[1]) +
+  geom_sf(data = tiny_countries2, size = 2, color = paleta[3]) +
   geom_sf(data = tiny_countries, size = 2, color = "red", alpha = 0) +
   coord_sf(expand = FALSE) +
   theme_minimal() + 
@@ -119,14 +119,25 @@ data_tuvalu <- tibble(years = tuvalu_years, GNI = tuvalu_GNI)
 ggplot(data_tuvalu) +
   geom_line(aes(x = years, y = GNI), size = 1.5, color = "black") +
   geom_hline(yintercept = 5000000, color = paleta[3], size = 1.2, lty = 2) +
-  scale_y_continuous(limits = c(0, 70000000), labels = scales::comma) +
-  scale_x_continuous(limits = c(2011, 2019), breaks = c(2011,2013,2015,2017,2019)) +
-  labs(x = "", y = "GNI (US dollars)", caption = "Source: data.worldbank.org") +
-  theme_minimal() +
+  annotate(geom = "text", x = 2019, y = 7500000, color = paleta[3], label = ".tv domain income", size = 8, hjust = 1, family = "Didact Gothic") +
+  annotate(geom = "text", x = 2019, y = 68000000, color = "black", label = "GNI Tuvalu", size = 8, hjust = 1, family = "Didact Gothic") +
+  scale_y_continuous(limits = c(0, 70000000), 
+                     labels = scales::dollar,
+                     breaks = c(20000000, 40000000, 60000000),
+                     expand = c(0, 0)) +
+  scale_x_continuous(limits = c(2011, 2019), 
+                     breaks = c(2011,2013,2015,2017,2019),
+                     expand = c(0, 0)) +
+  theme_void() +
+  labs(x = "", y = "Annual US Dollar Amount\n", caption = "Source: data.worldbank.org") +
   theme(
         #panel.border =  element_rect(fill = "#272822", color = "#272822"),
         text = element_text(family = "Didact Gothic", size = 14),
-        axis.text = element_text(family = "Didact Gothic"))
+        axis.text = element_text(family = "Didact Gothic", hjust = 1),
+        axis.text.x = element_text(family = "Didact Gothic", hjust = 0),
+        axis.title.y = element_text(family = "Didact Gothic", angle = 90),
+        axis.line.x = element_line(color = "black"),
+        axis.line.y = element_line(color = "black"))
 
 ```
 In the last 10 years, between 7.7% and 10.2% of the GNI of Tuvalu came from the ".tv" domain. And that, only for being lucky enough to have a coveted internet domain.
